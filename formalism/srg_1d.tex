@@ -1,0 +1,209 @@
+
+
+
+\documentclass[aps,prc,preprint,groupedaddress]{revtex4-1}
+%\documentclass[aps,prc,reprint,showpacs,groupedaddress,onecolumn]{revtex4-1}
+%\documentclass[aps,prd,final,showpacs,twocolumn]{revtex4-1}
+%
+\usepackage{graphicx,color}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+%\usepackage{bm}% bold math
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{bm}% bold math
+\usepackage{epsfig}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{bbm}
+% Strikeout: \sout{text}
+\usepackage[normalem]{ulem}
+\usepackage{epsfig}
+\usepackage{bm}% bold math
+%\usepackage{pdfpages}
+%\usepackage{titlesec}
+%\usepackage[all]{xypic}
+
+
+\newcommand{\br}{{\bf r}}
+\newcommand{\dd}[2]{\ensuremath{\frac{\mathrm{d}#1}{\mathrm{d}#2}}}
+\newcommand{\rd}{\ensuremath{\hbox{d}}}
+\newcommand{\bracket}[3]{\bra{#1}#2\ket{#3}}
+\newcommand{\bra}[1]{\langle#1\rvert}
+\newcommand{\ket}[1]{\lvert#1\rangle}
+\newcommand{\brak}[2]{\bra{#1}#2\rangle}
+\newcommand{\id}{\ensuremath{\,\rd}}
+
+
+%
+%
+\begin{document}
+
+
+\title{SRG evolution of two-body interactions in 1D}
+
+\author{Md.~A.~Al~Mamun, S.~Lalit, L.~Hlophe, B.~Muccioli,  A.~Thapaliya, V.~Eremenko, M.~R.~Hadizadeh}
+\affiliation{Institute of Nuclear and Particle Physics and Department of Physics and Astronomy, Ohio University, Athens, OH 45701, USA}
+
+
+
+
+\date{\today}
+
+\begin{abstract}
+In this group project, we solve SRG differential flow equation for evolution of spin-independent two-body interactions in one dimension \cite{Akerlund-EPJA}. 
+\end{abstract}
+
+%\pacs{14.65.-q, 12.39.Jh}
+
+
+\maketitle
+
+
+
+
+
+\section{$NN$ interactions:}
+	
+Simple two-boson interactions used to study the SRG evolution of $NN$ interactions:
+
+\begin{itemize}
+\item one-term separable potential
+\begin{equation}
+V_{sep}(p,p') = g \, e^{(-p^2/\Lambda^2)}\, e^{(-p'^2/\Lambda^2)} 
+\end{equation}
+with parameters $g=-1$ and $\Lambda=10$.
+
+\item Gaussian potential
+\begin{equation}
+V(p,p') = \sum_{i=1,2} \frac{V_i}{2\pi} \, e^ {\left(  - \frac{ (p-p')^2 \alpha_i^2}{4} \right)} 
+\end{equation}
+with parameters given in Table \ref{tab:gaussian}.
+\begin{table}[H]
+\begin{center}
+\label{tab:gaussian}
+\begin{tabular}{c|ccccccccc}
+&&$V_1$ && $V_2$ && $\alpha_1$ && $\alpha_2$ \\ \hline
+ Model I &&12 &&  -12 && 0.2 && 0.8\\
+Model II && 0 &&  -2 && 0 && 0.8\\
+\end{tabular}
+\end{center}
+\caption{Parameters of the two-body Gaussian potential.}
+\end{table}
+
+
+\end{itemize}
+
+
+
+\section{Steps in the implementation process:}
+
+\begin{enumerate}
+\item Formulation of SRG flow equation - {\color{red}{Hadi}}
+\item Coding
+\begin{itemize}
+\item potential - {\color{red}{Sudhanva}}
+\item SRG flow equation  - {\color{red}{Arbin}}
+\item ODE solver - {\color{red}{Linda}}
+\item LS equation for 2B bound state - {\color{red}{Sudhanva}}
+\end{itemize}
+
+\item Preparation of the results - {\color{red}{Mamun}}
+\begin{itemize}
+\item 2D contour plots for SRG evolution of 2B interaction
+\item A table for 2B binding energy as a function of SRG flow parameter 
+\end{itemize}
+
+\item Presentation of the results
+\end{enumerate}
+	
+	
+
+\section{SRG flow equation in 1D:}
+
+SRG flow equation for evolution of $NN$ interaction can be written as:
+\begin{equation}
+\label{eq:srg-general}
+\dd{H_s}{s} = \dd{V_s}{s}=G_sH_sH_s+H_sH_sG_s-2H_sG_sH_s,
+\end{equation}
+where the generator operator can be chosen to be kinetic energy, i.e. $G_s=T$. The reason for this selection is that $T$ is, in itself, diagonal in momentum space and as we shown by simple example of two state problem, this generator drives the Hamiltonian to the diagonal form, which is usually desirable. 
+Using the kinetic energy operator as generator, the SRG equation can be written as
+\begin{equation}
+\label{eq:srg}
+\frac{\rd V_s}{\rd s} = 2TV_sT + V_sV_sT + TV_sV_s - V_sTT - TTV_s -
+2V_STV_s .
+\end{equation}
+
+In order to project the flow equation in momentum space, we define 2B basis states in partial wave representation and in $s-$wave channel as:
+\begin{equation}
+  \label{eq:2cst}
+  |p \:l=0\rangle,
+\end{equation}
+where $p$ is the magnitude of the relative 2B momentum ${\bf p}$ which is defined as
+\begin{equation}
+  \label{eq:jacobi}
+  {\bf p}=\frac{1}{2}\left({\bf k}_1-{\bf k}_2\right),
+\end{equation}
+the momenta ${\bf k}_1$ and ${\bf k}_2$ are momentum of particles 1 and 2 in the laboratory frame.  The 2B basis states are complete as
+\begin{equation}
+  \label{eq:completness}
+  1=\int_0^\infty \hbox{d}p\;|p \:l=0\rangle\langle p \: l=0|=\int \hbox{d}p\;|p\:
+  0\rangle\langle p\: 0| .
+\end{equation}
+
+
+The representation of SRG flow equation (\ref{eq:srg}) in the introduced basis states in Eq. (\ref{eq:2cst}) leads to
+\begin{eqnarray}
+\label{eq:two_body_momspace}
+\nonumber
+\frac{\rd V_s(p,p')}{\rd s} &=& -\left( p^2-p'^2 \right )^2\, V_s(p,p') \\ 
+\nonumber
+&+& \left ( p^2+p'^2 \right )\int_{0}^{\infty} \id p'' \,  V_s(p,p'') \, V_s(p'',p') \\
+&-&2\int_{0}^{\infty} \id p'' p''^2 \,  V_s(p,p'') \, V_s(p'',p') ,
+\end{eqnarray}
+Clearly the first term on the right hand side of differential flow equation ensures that the potential is
+driven to the diagonal.
+
+
+\section{Two-body bound state}
+
+In order to test the SRG evolved 2B interaction, we should check it to be sure 2B observables are preserved. To this aim we solve the homogeneous Lippmann-Schwinger integral equation for 2B bound state to verify the preservation of 2B binding energy in each step of evolution.
+The bound state of two equal mass particles in momentum space and in partial wave representation and in $s-$wave channel is given by
+\begin{equation}
+\psi_0(p) = \frac{1}{E-\frac{p^2}{m}} \int_{0}^{\infty} dp' \, V_0(p,p') \, \psi_0(p'),
+\end{equation}
+where $V_0(p,p')$ is $s-$wave projection of 2B potential and $\psi_0(p)$ is 2B wave function.
+
+
+
+
+
+
+
+
+
+
+%\section*{Acknowledgments}
+
+
+%\bibliography{Tetra}
+%\bibliographystyle{ieeetr}
+%\setcitestyle{square}
+
+
+\begin{thebibliography}{9}
+
+\bibitem{Akerlund-EPJA}
+O. Akerlund et al., Eur. Phys. J. A {\bf 47}, 122 (2011).
+
+
+
+\end{thebibliography}
+
+ 
+
+
+\end{document}     
