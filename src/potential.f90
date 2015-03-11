@@ -1,3 +1,9 @@
+! Functions to calculate the potentials. See details below.
+!
+! Sudhanva Lalit <...>
+!
+! Around 2015-03-09
+
 !	One term-separable potential with parameters g = -1 and lambda = 10
 
 !      module potential
