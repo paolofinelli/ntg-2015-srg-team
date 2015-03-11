@@ -11,3 +11,12 @@ disciplines and conventions.
 The theoretical physics aim of the project is to solve SRG
 differential flow equation for evolution of spin-independent two-body
 interactions in one dimention.  See more at `formalism/srg_1d.pdf`.
+
+
+
+
+## COPYRIGHT NOTICE
+
+All the documents, source codes, and data are the property of the Ohio
+University and could be distributed only under the terms of the Ohio
+University's policies.
