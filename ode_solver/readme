@@ -1,0 +1,28 @@
+
+ ode_solver: - solves the SRG evolution equation 
+               according to Eq.(8) starting from
+               a bare potential V_{s=0} 
+
+             
+             - uses following routines:
+                          (1) vsep   == potential
+                          (2) derivs == RHS of Eq.(8)
+                          (3) gauleg == integration pts 
+                          (4) trns   == map to infty 
+                          (5) rk4m   == rk4 subroutine/
+                                        ode solver 
+
+
+              - use the script "ode.sh" to compile and  
+                run
+
+
+              - output is written in "vkpotN.out" where
+                N is an integer and N: s=N*h, where h is
+                the step size in s.
+            
+              - sample outputs are included for different
+                values of N.
+
+
+                 
