@@ -52,7 +52,7 @@ OBJS += trns.o
 OBJS += vsep.o
 
 F77OBJS =
-F77OBJS += Arpack_Lapack.o
+F77OBJS += arpack_lapack.o
 
 
 ###
