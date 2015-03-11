@@ -28,7 +28,7 @@ FC = f95
 
 # To specify your flags (options) run
 # $ make FFLAGS="<your-flags>"
-FFLAGS = -Wall
+FFLAGS =
 #FFLAGS = -g -ftrap=common -c
 #FFLAGS =  -c -C
 #FFLAGS = -c -g -C -f77=%all,logical  -onetrip -Bstatic 
