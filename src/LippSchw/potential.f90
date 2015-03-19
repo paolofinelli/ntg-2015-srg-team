@@ -5,12 +5,12 @@
       implicit none
       double precision :: p, pprime, g, lambda
       parameter (lambda = 10.d0)
-      parameter (g = -1.d0)
+      parameter (g =-1.d0)
       
 
-      v1sep = g*exp(-p**2/lambda**2)*exp(-pprime**2/lambda**2)
+      v1sep =2d0*g*dexp(-(p**2+pprime**2)/lambda**2)
 
-      end function      
+      end      
 
 
 !========================================================================
@@ -24,26 +24,29 @@
       implicit none
 
       integer :: i, j, n
-      double precision :: p1, p1prime, alpha, pi , v1
+      double precision :: p1, p1prime, alpha, pi,hc,m0 
       double precision :: v11, v12, v21, v22, alpha11, alpha12, alpha21, alpha22
+
+      parameter(m0=938d0, hc=197.3207d0)
       parameter (v11 = 12.d0)
       parameter (v12 = -12.d0)
       parameter (v21 = 0.d0)
       parameter (v22 = -2.d0)
-      parameter (alpha11 = 0.2d0)
-      parameter (alpha12 = 0.8d0)
-      parameter (alpha21 = 0.d0)
-      parameter (alpha22 = 0.8d0)
+      parameter (alpha11 = 0.2d0/2)
+      parameter (alpha12 = 0.8d0/2)
+      parameter (alpha21 = 0.d0/4)
+      parameter (alpha22 = 0.8d0/4)
 !      parameter(pi = 3.14158281)
       pi=4.d0*atan(1.d0)
 
+
 !	Model 1	
-	v1 = (1/(2*pi))*(exp(-(p1-p1prime)**2*(alpha11**2)) + exp(-(p1-p1prime)**2*(alpha12**2)))
-
+	v1 =1.d0/(2d0*pi)*(v11*dexp(-(p1-p1prime)**2*alpha11**2) + v12*dexp(-(p1-p1prime)**2*alpha12**2))
+   
 !	Model 2	
-!	v1 = (1/(2*pi))*(exp(-(p1-p1prime)**2*(alpha21**2)) + exp(-(p1-p1prime)**2*(alpha22**2)))
+!	v1 = -(1/(2*pi))*(exp(-(p1-p1prime)**2*(alpha21**2)) + exp(-(p1-p1prime)**2*(alpha22**2)))
 
-      end function
+      end
 
 
       
