@@ -18,7 +18,7 @@
 \usepackage{epsfig}
 \usepackage{amssymb}
 \usepackage{amsmath}
-\usepackage{bbm}
+%\usepackage{bbm}
 % Strikeout: \sout{text}
 \usepackage[normalem]{ulem}
 \usepackage{epsfig}
@@ -185,7 +185,7 @@ The value of the potential for various values of $s$ have been tabulated in tabl
 \begin{table}
 \caption{Value of the potential for various values of the flow parameter $s$}
 \begin{ruledtabular} \label{tab1}
-\begin{tabular}{|ll|}
+\begin{tabular}{|cc|}
 \hline
 s &$V_s$      \\
 \hline
@@ -202,6 +202,8 @@ $10^{-1}$		&     \\
 \end{ruledtabular}
 \end{table}
 \end{center}
+
+0, , , , , , , 
 
 
 
